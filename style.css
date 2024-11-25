@@ -5,7 +5,8 @@ body {
 }
 
 header {
-    background-color: #f2f2f2;
+    background-color: #333;
+    color: #fff;
     padding: 20px;
 }
 
@@ -20,12 +21,63 @@ nav ul li {
     margin-right: 10px;
 }
 
-main {
-    padding: 20px;
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+section {
+    padding: 50px;
+}
+
+.animal {
+    display: inline-block;
+    width: 300px;
+    margin: 20px;
+    text-align: center;
+}
+
+.animal img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+}
+
+.gallery-grid img {
+    width: 100%;
+    height: auto;
+}
+
+form label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+form input,
+form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+form button {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
 }
 
 footer {
-    background-color: #f2f2f2;
-    padding: 10px;
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
     text-align: center;
 }

@@ -1,41 +1,28 @@
-// إضافة تأثيرات حركية إلى الشريط التنقل
-document.addEventListener('scroll', function() {
- const nav = document.querySelector('header nav');
- const sections = document.querySelectorAll('main section');
- const scrollTop = window.scrollY;
- sections.forEach(function(section) {
- const top = section.offsetTop;
- const height = section.offsetHeight;
- if (scrollTop >= top && scrollTop < top + height) {
- nav.querySelector(`a[href="#${section.id}"]`).classList.add('active');
- } else {
- nav.querySelector(`a[href="#${section.id}"]`).classList.remove('active');
- }
- });
-});
-
-// إضافة تأثيرات حركية إلى الأقسام
 document.addEventListener('DOMContentLoaded', function() {
- const sections = document.querySelectorAll('main section');
- sections.forEach(function(section) {
- section.addEventListener('mouseover', function() {
- section.classList.add('hover');
- });
- section.addEventListener('mouseout', function() {
- section.classList.remove('hover');
- });
- });
-});
+    // Smooth scrolling for navigation links
+    const navLinks = document.querySelectorAll('nav ul li a');
+    const sections = document.querySelectorAll('section');
 
-// إضافة تأثيرات حركية إلى الصور
-document.addEventListener('DOMContentLoaded', function() {
- const images = document.querySelectorAll('img');
- images.forEach(function(image) {
- image.addEventListener('mouseover', function() {
- image.classList.add('zoom');
- });
- image.addEventListener('mouseout', function() {
- image.classList.remove('zoom');
- });
- });
+    for (const link of navLinks) {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href').substring(1);
+            const targetSection = document.getElementById(targetId);
+
+            window.scrollTo({
+                top: targetSection.offsetTop - 70, // Adjust the offset as needed
+                behavior: 'smooth'
+            });
+        });
+    }
+
+    // Reveal sections on scroll
+    window.addEventListener('scroll', function() {
+        const scrollPos = window.scrollY + window.innerHeight;
+        for (const section of sections) {
+            if (section.offsetTop < scrollPos - 100) {
+                section.classList.add('visible');
+            }
+        }
+    });
 });
